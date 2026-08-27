@@ -1,0 +1,5 @@
+import os, duckdb
+os.environ["motherduck_token"] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudG9ueTEzYmlub3NAZ21haWwuY29tIiwibWRSZWdpb24iOiJhd3MtZXUtY2VudHJhbC0xIiwic2Vzc2lvbiI6ImFudG9ueTEzYmlub3MuZ21haWwuY29tIiwicGF0IjoiRWxNOVZHN1hmRnZ5Y3B5VmVOaU80WG9xUHV1dy0xMVJ5blJZOTl3NUpNTSIsInVzZXJJZCI6IjU4OTFmNjFiLWYxMDAtNGRiOC04NjRlLWJiM2E4ODM3MjgzMiIsImlzcyI6Im1kX3BhdCIsInJlYWRPbmx5IjpmYWxzZSwidG9rZW5UeXBlIjoicmVhZF93cml0ZSIsImlhdCI6MTc4NzgyMDgxN30.JtgAq81xCGdZPwU1S6UzTa25BrbN4V_x7MuasIyf5MM"
+con = duckdb.connect("md:")
+con.execute("CREATE DATABASE greece_energy_market2 FROM 'greece_energy_market2.duckdb'")
+print(con.execute("SHOW DATABASES").df())

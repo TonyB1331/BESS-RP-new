@@ -1,0 +1,45 @@
+name: Daily DuckDB Market Data Sync
+
+on:
+  schedule:
+    # Runs daily at 11:00 UTC (14:00 Greek Time / EEST during Summer)
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-database:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies & Git LFS
+        run: |
+          sudo apt-get install git-lfs
+          git lfs install
+          python -m pip install --upgrade pip
+          pip install duckdb pandas numpy requests entsoe-py openpyxl
+
+      - name: Run Database Sync Script
+        run: |
+          python db_sync2.py
+
+      - name: Commit and Push Updated Database via LFS
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git lfs track "*.duckdb"
+          git add .gitattributes greece_energy_market2.duckdb
+          git commit -m "Automated daily sync: D-1 to D+1" || exit 0
+          git push

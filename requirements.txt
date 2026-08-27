@@ -1,0 +1,11 @@
+streamlit
+pandas
+numpy
+plotly
+openpyxl
+duckdb>=1.1.0
+requests
+pulp
+lightgbm
+scikit-learn
+entsoe-py
