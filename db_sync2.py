@@ -10,6 +10,10 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 from entsoe import EntsoePandasClient
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Suppress openpyxl warnings globally
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
