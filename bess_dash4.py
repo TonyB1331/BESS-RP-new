@@ -106,7 +106,7 @@ ASSET_CAPACITIES_MW = {
     "SUS_BZ1_03_SB": 20.0,
     "PPC_BZ1_01_SB": 1.0,
     "PPC_BZ1_02_SB": 1.0,
-    "STO_BZ1_03_SP": 1.0,
+    "STO_BZ1_03_SP": 5.0,
     "OPT_BZ1_01_SB": 49.9,
 }
 

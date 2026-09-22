@@ -1,4 +1,4 @@
-"""Battery (BESS) physical model for the XBID intraday RL trader.
+""" Battery (BESS) physical model for the XBID intraday RL trader.
 
 This module replaces the supplier-specific *residual-imbalance* asset model
 with a **merchant battery** model.  Where a supplier had an exogenous,
